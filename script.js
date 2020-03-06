@@ -53,8 +53,9 @@ function createBr(){
 //addEvventListener - оработчик событий с последующим вызовом функции
 
 inputData.addEventListener('keypress', function(keyPressed){
+    var space = '\s';
     if(keyPressed.which === 13){
-        if(this.value !== ""){
+        if(this.value !== '' && this.value !== ' '){
             var newLi = document.createElement('li');
             var newSpan = document.createElement('span');
             var newBr = document.createElement('br');
