@@ -53,9 +53,8 @@ function createBr(){
 //addEvventListener - оработчик событий с последующим вызовом функции
 
 inputData.addEventListener('keypress', function(keyPressed){
-    var space = '\s';
+    var space = / /gi;
     if(keyPressed.which === 13){
-        if(this.value !== '' && this.value !== ' '){
             var newLi = document.createElement('li');
             var newSpan = document.createElement('span');
             var newBr = document.createElement('br');
@@ -63,7 +62,8 @@ inputData.addEventListener('keypress', function(keyPressed){
             newSpan.innerHTML = 'Delete: ';
 
             var newInfo = this.value;
-            this.value = "";
+            var info = newInfo.replace(space, '');
+        if(info !== ''){
             var newDate = 'Дата записи: ' + ('0' + newData.getDate()).slice(-2) + '-' + ('0' + (newData.getMonth() + 1)).slice(-2) + '-' + newData.getFullYear();
 
             ulSpisok.appendChild(newLi).append(newSpan, newInfo, newBr, newDate);
